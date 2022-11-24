@@ -24,7 +24,7 @@ char *keywords[] = { /* palavras reservadas da linguagem */
 
 
 char *terminalName[] = { /* nome dos terminais aceitos pelo automato */
-  "double", "float","if", "int", "return", "while", "id", "num", "OP_ATRIB", "OP_ADIT", "OP_MULT", "ABRE_PARENT", "FECHA_PARENT", "PONTO_VIRG", 
+  "double", "float","if", "int", "return", "while", "id", "num", "OP_ATRIB", "BIT_E", "OP_ADIT", "OP_MULT", "ABRE_PARENT", "FECHA_PARENT", "PONTO_VIRG", 
   "ABRE_CHAVES", "FECHA_CHAVES", "CARACTER", "OP_REL", "FIM"
 };
 
@@ -88,6 +88,8 @@ int lex()
         return OP_MULT;
       case '+':
         return OP_ADIT;
+	  case '&':
+	    return BIT_E;
       case ';':
         return PONTO_VIRG;
       case '{':

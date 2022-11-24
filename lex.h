@@ -6,7 +6,7 @@
 enum boolean {FALSE=0, TRUE};
 
 enum tKeyword {DOUBLE=0, FLOAT, IF, INT, RETURN, WHILE, nKeywords};
-enum tTerminal {ID=nKeywords, NUM, OP_ATRIB, OP_ADIT, OP_MULT, ABRE_PARENT, FECHA_PARENT, PONTO_VIRG, ABRE_CHAVES, FECHA_CHAVES, CARACTER, OP_REL,FIM, nTerminal};
+enum tTerminal {ID=nKeywords, NUM, OP_ATRIB, BIT_E, OP_ADIT, OP_MULT, ABRE_PARENT, FECHA_PARENT, PONTO_VIRG, ABRE_CHAVES, FECHA_CHAVES, CARACTER, OP_REL,FIM, nTerminal};
 
 enum tErros{ERRO_LEXICO=nTerminal, ERRO_SINTATICO};
 extern int lines;

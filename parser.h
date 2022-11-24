@@ -16,8 +16,10 @@ void B();
 void C();
 void E();
 void T();
+void K();
 void F();
 void E_();
 void T_();
+void K_();
 void X();
 #endif

@@ -17,9 +17,11 @@ Gramática da linguagem aceita pelo parser:
  E         -> T E_
  E_        -> + T E_ 
             | epsilon
- T         -> F T_
- T_        -> * F T_ 
+ T         -> K T_
+ T_        -> * K T_ 
             | epsilon
+ K         -> F K_
+ K_	       -> & F K_
  F         -> ( E ) 
             | id X
             | num
@@ -125,11 +127,25 @@ void E(){
   T();
   E_();
 }
-// T -> FT'
+
+// T -> K T_
 void T(){
-  F();
+  K();
   T_();
 }
+
+//  K -> F K_
+void K(){
+	F();
+	K_();
+}
+
+// T -> F T_
+/*void T(){
+  F();
+  T_();
+}*/
+
 // E_ -> + T E_ | epsilon
 void E_(){
   if(lookahead==OP_ADIT){
@@ -138,16 +154,30 @@ void E_(){
     E_();
   }
 }
-/* T'-> *FT' 
+
+
+/* K_-> & F K_
+      | epsilon
+*/
+void K_(){
+  if(lookahead==BIT_E){
+    match(BIT_E);
+    F();
+    K_();
+  }
+}
+
+/* T_-> * K T_
       | epsilon
 */
 void T_(){
   if(lookahead==OP_MULT){
     match(OP_MULT);
-    F();
+    K();
     T_();
   }
 }
+
 /*
  F -> (E) 
       | id X
